@@ -7,6 +7,7 @@ const getCountryByName = async (countryName) => {
 
     // pass country information into a div and display it
     const countryContainer = document.createElement('div');
+    countryContainer.className = 'country';
 
     const nameContainer = document.createElement('div');
     nameContainer.innerText = 'Name: ' + country.name.common;
@@ -27,4 +28,13 @@ const getCountryByName = async (countryName) => {
     document.querySelector('#foundCountry').appendChild(countryContainer);
 }
 
-getCountryByName('Spain');
+const getAllCountries = async () => {
+    const response = await fetch('https://restcountries.com/v3.1/all');
+    data = await response.json();
+    data.forEach(country => {
+        getCountryByName(country.name.official)
+    });
+}
+
+// getCountryByName('South Africa');
+getAllCountries();
