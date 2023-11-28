@@ -7,9 +7,24 @@ const getCountryByName = async (countryName) => {
 
     // pass country information into a div and display it
     const countryContainer = document.createElement('div');
-    countryContainer.innerText = country.name.common;
-    console.log(countryContainer);
+
+    const nameContainer = document.createElement('div');
+    nameContainer.innerText = 'Name: ' + country.name.common;
+    countryContainer.appendChild(nameContainer);
+
+    const capitalContainer = document.createElement('div');
+    capitalContainer.innerText = 'Capital(s): ' + country.capital;
+    countryContainer.appendChild(capitalContainer);
+
+    const languagesContainer = document.createElement('div');
+    languagesContainer.innerText = 'Language(s): ' + Object.values(country.languages);
+    countryContainer.appendChild(languagesContainer);
+
+    const populationContainer = document.createElement('div');
+    populationContainer.innerText = 'population: ' + country.population;
+    countryContainer.appendChild(populationContainer);
+
     document.querySelector('#foundCountry').appendChild(countryContainer);
 }
 
-getCountryByName('Brazil');
+getCountryByName('Spain');
