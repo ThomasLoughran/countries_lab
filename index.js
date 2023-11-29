@@ -18,7 +18,11 @@ const getCountryByName = async (countryName) => {
     countryContainer.appendChild(capitalContainer);
 
     const languagesContainer = document.createElement('div');
-    languagesContainer.innerText = 'Language(s): ' + Object.values(country.languages);
+    if (country.languages == (null || undefined)){
+        languagesContainer.innerText = 'Language(s): ';
+    } else {
+        languagesContainer.innerText = 'Language(s): ' + Object.values(country.languages);
+    }
     countryContainer.appendChild(languagesContainer);
 
     const populationContainer = document.createElement('div');
